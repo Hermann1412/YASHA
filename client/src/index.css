@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background: #0d0d0d;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overscroll-behavior: none;
+}
+
+@layer components {
+  .card {
+    @apply bg-yasha-card rounded-2xl border border-yasha-border;
+  }
+
+  .btn-gold {
+    @apply bg-gold text-black font-bold rounded-xl px-6 py-3 active:scale-95 transition-transform;
+  }
+
+  .btn-ghost {
+    @apply bg-yasha-card text-white rounded-xl px-6 py-3 border border-yasha-border active:scale-95 transition-transform;
+  }
+
+  .page {
+    @apply min-h-screen pb-24 px-4 pt-6;
+  }
+
+  .section-title {
+    @apply text-lg font-bold text-white mb-3;
+  }
+}
+
+/* Scrollbar hide */
+::-webkit-scrollbar { display: none; }
+* { scrollbar-width: none; }

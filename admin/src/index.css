@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { background: #0d0d0d; color: white; font-family: -apple-system, sans-serif; }
+
+@layer components {
+  .card { @apply bg-yasha-card rounded-xl border border-yasha-border; }
+  .stat-value { @apply text-3xl font-bold; }
+}
