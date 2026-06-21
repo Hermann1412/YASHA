@@ -29,6 +29,7 @@ export default function Onboarding() {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [showPw, setShowPw] = useState(false)
   const navigate = useNavigate()
   const { signInWithGoogle, signInWithEmail, signUpWithEmail } = useAuth()
 
@@ -74,11 +75,20 @@ export default function Onboarding() {
               required
               className="w-full bg-yasha-card border border-yasha-border rounded-xl px-4 py-3 text-white focus:border-gold outline-none"
             />
-            <input
-              type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}
-              required minLength={6}
-              className="w-full bg-yasha-card border border-yasha-border rounded-xl px-4 py-3 text-white focus:border-gold outline-none"
-            />
+            <div className="relative">
+              <input
+                type={showPw ? 'text' : 'password'} placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}
+                required minLength={6}
+                className="w-full bg-yasha-card border border-yasha-border rounded-xl px-4 py-3 pr-12 text-white focus:border-gold outline-none"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPw(!showPw)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors text-sm"
+              >
+                {showPw ? '🙈' : '👁️'}
+              </button>
+            </div>
             {error && <p className="text-red-400 text-sm">{error}</p>}
             <Button type="submit" disabled={loading} className="w-full">
               {loading ? 'Loading...' : mode === 'signup' ? 'Create Account' : 'Sign In'}

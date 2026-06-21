@@ -1,4 +1,5 @@
 const { createClient } = require('@supabase/supabase-js')
+const WebSocket = require('ws')
 
 const url = process.env.SUPABASE_URL
 const key = process.env.SUPABASE_SERVICE_KEY
@@ -8,7 +9,9 @@ if (!url || url.includes('xxxx')) {
 }
 
 const supabase = url && key && !url.includes('xxxx')
-  ? createClient(url, key)
+  ? createClient(url, key, {
+      realtime: { transport: WebSocket },
+    })
   : null
 
 function getSupabase() {
